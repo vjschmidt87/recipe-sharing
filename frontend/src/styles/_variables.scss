@@ -1,0 +1,55 @@
+:root[data-theme="light"] {
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #555770;
+  --accent: #e8590c;
+  --accent-hover: #d14b08;
+  --border: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --error: #dc3545;
+  --success: #28a745;
+  --warning: #ffc107;
+  --overlay: rgba(0, 0, 0, 0.5);
+  --btn-text-light: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-card: #252525;
+  --text-primary: #e8e8e8;
+  --text-secondary: #a0a0b0;
+  --accent: #e8590c;
+  --accent-hover: #ff6b1a;
+  --border: #333333;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --error: #ff6b6b;
+  --success: #51cf66;
+  --warning: #ffd43b;
+  --overlay: rgba(0, 0, 0, 0.7);
+  --btn-text-light: #ffffff;
+}
+
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 16px;
+
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+$font-xs: 0.75rem;
+$font-sm: 0.875rem;
+$font-md: 1rem;
+$font-lg: 1.25rem;
+$font-xl: 1.5rem;
+$font-2xl: 2rem;

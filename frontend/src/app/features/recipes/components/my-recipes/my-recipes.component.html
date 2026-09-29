@@ -1,0 +1,16 @@
+<div class="container page">
+  <h1>{{ t.t('myRecipes.title') }}</h1>
+
+  @if (recipes.length) {
+    <div class="recipe-grid">
+      @for (recipe of recipes; track recipe.id) {
+        <app-recipe-card [recipe]="recipe" />
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <p>{{ t.t('myRecipes.noRecipes') }}</p>
+      <a routerLink="/add-recipe" class="btn-add">{{ t.t('myRecipes.addFirst') }}</a>
+    </div>
+  }
+</div>

@@ -1,0 +1,78 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.auth-page {
+  @include flex-center;
+  min-height: calc(100vh - 200px);
+  padding: $spacing-xl $spacing-md;
+}
+
+.auth-card {
+  @include card;
+  padding: $spacing-xl;
+  width: 100%;
+  max-width: 420px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+    font-size: $font-xl;
+  }
+}
+
+.error {
+  background: var(--error);
+  color: var(--btn-text-light);
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-sm;
+  margin-bottom: $spacing-md;
+  font-size: $font-sm;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: $spacing-md;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-weight: 500;
+    font-size: $font-sm;
+    color: var(--text-secondary);
+  }
+
+  input {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid var(--border);
+    border-radius: $radius-sm;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: $font-md;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+  }
+}
+
+.btn-submit {
+  @include button-base;
+  width: 100%;
+  background: var(--accent);
+  color: var(--btn-text-light);
+  padding: $spacing-sm $spacing-md;
+  margin-top: $spacing-sm;
+
+  &:hover {
+    background: var(--accent-hover);
+  }
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: $spacing-lg;
+  font-size: $font-sm;
+  color: var(--text-secondary);
+}

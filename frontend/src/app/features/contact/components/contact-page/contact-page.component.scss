@@ -1,0 +1,70 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.contact-page {
+  @include flex-center;
+  min-height: calc(100vh - 200px);
+  padding: $spacing-xl $spacing-md;
+}
+
+.contact-card {
+  @include card;
+  padding: $spacing-xl;
+  width: 100%;
+  max-width: 560px;
+
+  h1 {
+    font-size: $font-xl;
+    margin-bottom: $spacing-sm;
+  }
+
+  .subtitle {
+    color: var(--text-secondary);
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.form-group {
+  margin-bottom: $spacing-md;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-weight: 500;
+    font-size: $font-sm;
+    color: var(--text-secondary);
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid var(--border);
+    border-radius: $radius-sm;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: $font-md;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+.btn-send {
+  @include button-base;
+  width: 100%;
+  background: var(--accent);
+  color: var(--btn-text-light);
+  padding: $spacing-sm $spacing-md;
+
+  &:hover {
+    background: var(--accent-hover);
+  }
+}

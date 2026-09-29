@@ -1,0 +1,42 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.page {
+  padding: $spacing-xl 0;
+}
+
+h1 {
+  font-size: $font-2xl;
+  margin-bottom: $spacing-lg;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+}
+
+.empty-state {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-lg;
+  padding: 80px $spacing-md;
+  text-align: center;
+
+  p {
+    font-size: $font-lg;
+    color: var(--text-secondary);
+  }
+}
+
+.btn-add {
+  @include button-base;
+  background: var(--accent);
+  color: var(--btn-text-light);
+  padding: $spacing-md $spacing-xl;
+
+  &:hover {
+    background: var(--accent-hover);
+    color: var(--btn-text-light);
+  }
+}

@@ -1,0 +1,149 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 4px var(--shadow);
+}
+
+.header-inner {
+  @include flex-between;
+  padding: $spacing-sm $spacing-md;
+  min-height: 56px;
+}
+
+.logo {
+  font-size: $font-xl;
+  font-weight: 700;
+  color: var(--accent) !important;
+  letter-spacing: -0.5px;
+}
+
+.nav {
+  @include flex-center;
+  gap: $spacing-md;
+
+  a {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: $font-sm;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $radius-sm;
+    transition: color 0.2s, background 0.2s;
+
+    &:hover,
+    &.active {
+      color: var(--accent);
+    }
+  }
+}
+
+.nav-actions {
+  @include flex-center;
+  gap: $spacing-sm;
+  margin-left: $spacing-sm;
+}
+
+.icon-btn {
+  @include button-base;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  min-width: 36px;
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-sm;
+  border-radius: $radius-sm;
+}
+
+.username {
+  color: var(--text-secondary);
+  font-size: $font-sm;
+  font-weight: 500;
+}
+
+.btn-login {
+  @include button-base;
+  background: var(--accent);
+  color: var(--btn-text-light);
+  font-size: $font-sm;
+
+  &:hover {
+    background: var(--accent-hover);
+    color: var(--btn-text-light);
+  }
+}
+
+.btn-logout {
+  @include button-base;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  font-size: $font-sm;
+
+  &:hover {
+    color: var(--error);
+    border-color: var(--error);
+  }
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-xs;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  &.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  &.active span:nth-child(2) {
+    opacity: 0;
+  }
+  &.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+@include respond-to($bp-md) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: $spacing-md;
+    gap: $spacing-sm;
+
+    &.open {
+      display: flex;
+    }
+  }
+
+  .nav-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: $spacing-sm;
+  }
+}

@@ -1,0 +1,32 @@
+<div class="container page">
+  <h1>{{ t.t('recipes.title') }}</h1>
+
+  <div class="filters">
+    <input type="text" class="search-input" [(ngModel)]="search"
+           [placeholder]="t.t('recipes.searchPlaceholder')" (input)="onFilterChange()">
+
+    <select class="filter-select" [(ngModel)]="selectedCuisine" (change)="onFilterChange()">
+      <option value="">{{ t.t('recipes.filterCuisine') }}</option>
+      @for (c of cuisines; track c) {
+        <option [value]="c">{{ t.t('cuisines.' + c) }}</option>
+      }
+    </select>
+
+    <select class="filter-select" [(ngModel)]="selectedDietary" (change)="onFilterChange()">
+      <option value="">{{ t.t('recipes.filterDietary') }}</option>
+      @for (d of dietaryTags; track d) {
+        <option [value]="d">{{ t.t('dietary.' + d) }}</option>
+      }
+    </select>
+  </div>
+
+  @if (recipes.length) {
+    <div class="recipe-grid">
+      @for (recipe of recipes; track recipe.id) {
+        <app-recipe-card [recipe]="recipe" />
+      }
+    </div>
+  } @else {
+    <p class="no-results">{{ t.t('recipes.noResults') }}</p>
+  }
+</div>

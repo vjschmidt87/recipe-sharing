@@ -1,0 +1,19 @@
+<a [routerLink]="['/recipes', recipe.id]" class="card">
+  <div class="card-image">
+    @if (recipe.imageUrl) {
+      <img [src]="recipe.imageUrl" [alt]="title">
+    } @else {
+      <div class="placeholder">🍽️</div>
+    }
+    <span class="cuisine-badge">{{ cuisineLabel }}</span>
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">{{ title }}</h3>
+    <p class="card-desc">{{ description }}</p>
+    <div class="card-meta">
+      <span class="rating">{{ ratingStars }} {{ recipe.averageRating | number:'1.1-1' }}</span>
+      <span class="time">⏱ {{ totalTime }} {{ t.t('recipes.minutes') }}</span>
+      <span class="servings">🍽 {{ recipe.servings }}</span>
+    </div>
+  </div>
+</a>

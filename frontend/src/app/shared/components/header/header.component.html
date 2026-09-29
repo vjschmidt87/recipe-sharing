@@ -1,0 +1,35 @@
+<header class="header">
+  <div class="header-inner container">
+    <a routerLink="/" class="logo" (click)="closeMenu()">RecipeShare</a>
+
+    <button class="hamburger" (click)="toggleMenu()" [class.active]="menuOpen">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" [class.open]="menuOpen">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">{{ t.t('nav.home') }}</a>
+      <a routerLink="/recipes" routerLinkActive="active" (click)="closeMenu()">{{ t.t('nav.recipes') }}</a>
+      @if (auth.isLoggedIn()) {
+        <a routerLink="/my-recipes" routerLinkActive="active" (click)="closeMenu()">{{ t.t('nav.myRecipes') }}</a>
+        <a routerLink="/add-recipe" routerLinkActive="active" (click)="closeMenu()">{{ t.t('nav.addRecipe') }}</a>
+      }
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">{{ t.t('nav.contact') }}</a>
+
+      <div class="nav-actions">
+        <button class="icon-btn" (click)="t.toggleLang()" [attr.title]="t.lang() === 'en' ? 'PT-BR' : 'EN'">
+          {{ t.lang() === 'en' ? 'PT-BR' : 'EN' }}
+        </button>
+        <button class="icon-btn" (click)="theme.toggleTheme()" [attr.title]="theme.theme() === 'light' ? t.t('theme.dark') : t.t('theme.light')">
+          {{ theme.theme() === 'light' ? '☀️' : '🌙' }}
+        </button>
+
+        @if (auth.isLoggedIn()) {
+          <span class="username">{{ auth.currentUser()?.username }}</span>
+          <button class="btn-logout" (click)="auth.logout(); closeMenu()">{{ t.t('nav.logout') }}</button>
+        } @else {
+          <a routerLink="/login" class="btn-login" (click)="closeMenu()">{{ t.t('nav.login') }}</a>
+        }
+      </div>
+    </nav>
+  </div>
+</header>

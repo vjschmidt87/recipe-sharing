@@ -1,0 +1,104 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.page {
+  padding: $spacing-xl 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: $font-2xl;
+  margin-bottom: $spacing-lg;
+}
+
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md;
+
+  &.thirds {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @include respond-to($bp-md) {
+    grid-template-columns: 1fr;
+
+    &.thirds {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  label {
+    font-weight: 500;
+    font-size: $font-sm;
+    color: var(--text-secondary);
+  }
+
+  input,
+  textarea,
+  select {
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid var(--border);
+    border-radius: $radius-sm;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: $font-md;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: $spacing-md;
+  padding-top: $spacing-md;
+}
+
+.btn-save {
+  @include button-base;
+  background: var(--accent);
+  color: var(--btn-text-light);
+  padding: $spacing-sm $spacing-xl;
+
+  &:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn-cancel {
+  @include button-base;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: $spacing-sm $spacing-xl;
+
+  &:hover {
+    border-color: var(--text-secondary);
+  }
+}

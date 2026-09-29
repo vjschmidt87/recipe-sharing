@@ -1,0 +1,93 @@
+<div class="container page">
+  <h1>{{ isEdit ? t.t('addRecipe.titleEdit') : t.t('addRecipe.titleAdd') }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="recipe-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.titleLabel') }}</label>
+        <input type="text" formControlName="title">
+      </div>
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.titlePtLabel') }}</label>
+        <input type="text" formControlName="titlePt">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.descLabel') }}</label>
+        <textarea formControlName="description" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.descPtLabel') }}</label>
+        <textarea formControlName="descriptionPt" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.ingredientsLabel') }}</label>
+        <textarea formControlName="ingredients" rows="6"></textarea>
+      </div>
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.ingredientsPtLabel') }}</label>
+        <textarea formControlName="ingredientsPt" rows="6"></textarea>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.instructionsLabel') }}</label>
+        <textarea formControlName="instructions" rows="6"></textarea>
+      </div>
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.instructionsPtLabel') }}</label>
+        <textarea formControlName="instructionsPt" rows="6"></textarea>
+      </div>
+    </div>
+
+    <div class="form-row thirds">
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.prepTimeLabel') }}</label>
+        <input type="number" formControlName="prepTimeMinutes">
+      </div>
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.cookTimeLabel') }}</label>
+        <input type="number" formControlName="cookTimeMinutes">
+      </div>
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.servingsLabel') }}</label>
+        <input type="number" formControlName="servings">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.cuisineLabel') }}</label>
+        <select formControlName="cuisine">
+          @for (c of cuisines; track c) {
+            <option [value]="c">{{ t.t('cuisines.' + c) }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label>{{ t.t('addRecipe.dietaryLabel') }}</label>
+        <select formControlName="dietaryTags">
+          @for (d of dietaryTags; track d) {
+            <option [value]="d">{{ t.t('dietary.' + d) }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>{{ t.t('addRecipe.imageUrlLabel') }}</label>
+      <input type="text" formControlName="imageUrl">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-save" [disabled]="form.invalid">{{ t.t('addRecipe.save') }}</button>
+      <button type="button" class="btn-cancel" (click)="router.navigate(['/recipes'])">{{ t.t('addRecipe.cancel') }}</button>
+    </div>
+  </form>
+</div>

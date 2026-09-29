@@ -1,0 +1,59 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.page {
+  padding: $spacing-xl 0;
+}
+
+h1 {
+  font-size: $font-2xl;
+  margin-bottom: $spacing-lg;
+}
+
+.filters {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+  flex-wrap: wrap;
+}
+
+.search-input,
+.filter-select {
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid var(--border);
+  border-radius: $radius-sm;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: $font-md;
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-select {
+  min-width: 150px;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+
+  @include respond-to($bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.no-results {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: $spacing-xl;
+  font-size: $font-lg;
+}

@@ -1,0 +1,67 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.hero {
+  @include flex-center;
+  flex-direction: column;
+  text-align: center;
+  padding: 80px $spacing-md;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: $spacing-md;
+    color: var(--accent);
+  }
+
+  p {
+    font-size: $font-lg;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.btn-explore {
+  @include button-base;
+  background: var(--accent);
+  color: var(--btn-text-light);
+  padding: $spacing-md $spacing-xl;
+  font-size: $font-lg;
+  border-radius: $radius-md;
+
+  &:hover {
+    background: var(--accent-hover);
+    color: var(--btn-text-light);
+  }
+}
+
+.featured {
+  padding: $spacing-xl 0;
+}
+
+.section-header {
+  @include flex-between;
+  margin-bottom: $spacing-lg;
+
+  h2 {
+    font-size: $font-xl;
+    font-weight: 600;
+  }
+
+  a {
+    font-weight: 500;
+  }
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+
+  @include respond-to($bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}

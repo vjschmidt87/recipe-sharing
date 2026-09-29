@@ -1,0 +1,25 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <h1>{{ t.t('auth.loginTitle') }}</h1>
+
+    @if (error) {
+      <p class="error">{{ error }}</p>
+    }
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>{{ t.t('auth.username') }}</label>
+        <input type="text" [(ngModel)]="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label>{{ t.t('auth.password') }}</label>
+        <input type="password" [(ngModel)]="password" name="password" required>
+      </div>
+      <button type="submit" class="btn-submit">{{ t.t('auth.loginBtn') }}</button>
+    </form>
+
+    <p class="switch-link">
+      {{ t.t('auth.noAccount') }} <a routerLink="/register">{{ t.t('auth.registerBtn') }}</a>
+    </p>
+  </div>
+</div>
