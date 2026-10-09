@@ -7,17 +7,36 @@ import com.portfolio.recipesharing.enums.CuisineType;
 import com.portfolio.recipesharing.repository.RecipeRepository;
 import com.portfolio.recipesharing.repository.ReviewRepository;
 import com.portfolio.recipesharing.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Configuration
+@Component
 public class DataSeeder implements CommandLineRunner {
 
     private final UserRepository userRepository;
     private final RecipeRepository recipeRepository;
     private final ReviewRepository reviewRepository;
     private final PasswordEncoder passwordEncoder;
+
+    @Value("${app.seed.admin.username}")
+    private String adminUsername;
+
+    @Value("${app.seed.admin.password}")
+    private String adminPassword;
+
+    @Value("${app.seed.admin.email}")
+    private String adminEmail;
+
+    @Value("${app.seed.chef.username}")
+    private String chefUsername;
+
+    @Value("${app.seed.chef.password}")
+    private String chefPassword;
+
+    @Value("${app.seed.chef.email}")
+    private String chefEmail;
 
     public DataSeeder(UserRepository userRepository, RecipeRepository recipeRepository,
                       ReviewRepository reviewRepository, PasswordEncoder passwordEncoder) {
@@ -32,15 +51,15 @@ public class DataSeeder implements CommandLineRunner {
         if (userRepository.count() > 0) return;
 
         User admin = new User();
-        admin.setUsername("admin");
-        admin.setEmail("admin@recipesharing.com");
-        admin.setPassword(passwordEncoder.encode("admin123"));
+        admin.setUsername(adminUsername);
+        admin.setEmail(adminEmail);
+        admin.setPassword(passwordEncoder.encode(adminPassword));
         userRepository.save(admin);
 
         User chef = new User();
-        chef.setUsername("chef_maria");
-        chef.setEmail("maria@recipesharing.com");
-        chef.setPassword(passwordEncoder.encode("maria123"));
+        chef.setUsername(chefUsername);
+        chef.setEmail(chefEmail);
+        chef.setPassword(passwordEncoder.encode(chefPassword));
         userRepository.save(chef);
 
         // ITALIAN

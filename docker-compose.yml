@@ -28,6 +28,12 @@ services:
       DB_USERNAME: ${DB_USERNAME:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:-postgres}
       JWT_SECRET: ${JWT_SECRET:-cmVjaXBlc2hhcmluZ3NlY3JldGtleWZvcmp3dHRva2VuZ2VuZXJhdGlvbjEyMzQ1Njc4OTA=}
+      SEED_ADMIN_USERNAME: ${SEED_ADMIN_USERNAME:-admin}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-admin123}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-admin@recipesharing.com}
+      SEED_CHEF_USERNAME: ${SEED_CHEF_USERNAME:-chef_maria}
+      SEED_CHEF_PASSWORD: ${SEED_CHEF_PASSWORD:-chef_maria_pass}
+      SEED_CHEF_EMAIL: ${SEED_CHEF_EMAIL:-maria@recipesharing.com}
       SPRING_PROFILES_ACTIVE: docker
     ports:
       - "8087:8087"

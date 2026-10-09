@@ -20,6 +20,15 @@ app:
   jwt:
     secret: ${JWT_SECRET:cmVjaXBlc2hhcmluZ3NlY3JldGtleWZvcmp3dHRva2VuZ2VuZXJhdGlvbjEyMzQ1Njc4OTA=}
     expiration-ms: 86400000
+  seed:
+    admin:
+      username: ${SEED_ADMIN_USERNAME:admin}
+      password: ${SEED_ADMIN_PASSWORD:admin123}
+      email: ${SEED_ADMIN_EMAIL:admin@recipesharing.com}
+    chef:
+      username: ${SEED_CHEF_USERNAME:chef_maria}
+      password: ${SEED_CHEF_PASSWORD:chef_maria_pass}
+      email: ${SEED_CHEF_EMAIL:maria@recipesharing.com}
 
 ---
 spring:
